@@ -36,3 +36,29 @@ __MACOSX/
 
 # --- Claude Code local files ---
 .claude/
+
+# --- Internal notes / evidence (kept local, not published) ---
+evidence/
+Refernce.md
+DEPLOYMENT_BLOCKERS.md
+TEAM_GUIDE.md
+DECISIONS.md
+VALIDATION.md
+COMPONENT_MAP.md
+
+# --- Secrets / credentials (extra safety) ---
+*.p12
+*.pfx
+*.crt
+id_rsa*
+secrets/
+credentials.json
+service-account*.json
+
+# --- Misc local artifacts ---
+*.sqlite
+*.sqlite3
+*.db
+.env.local
+node_modules/
+.DS_Store
