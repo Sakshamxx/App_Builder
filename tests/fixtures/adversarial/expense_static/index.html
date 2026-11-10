@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Expenses</title></head>
+<body>
+<h1>Expenses</h1>
+<nav><a data-testid="nav-dashboard" href="dashboard.html">Dashboard</a> |
+<a data-testid="nav-settings" href="settings.html">Settings</a></nav>
+<select data-testid="category"><option>Food</option><option>Travel</option><option>Other</option></select>
+<input data-testid="amount" type="number" step="0.01" placeholder="Amount">
+<input data-testid="date" type="date">
+<button data-testid="add-expense">Add expense</button>
+<p>Show: <select data-testid="filter-category"><option>All</option><option>Food</option><option>Travel</option><option>Other</option></select></p>
+<ul id="list"></ul>
+<script>
+const $ = id => document.querySelector('[data-testid="' + id + '"]');
+let expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
+function render() {
+  const f = $('filter-category').value, ul = document.getElementById('list');
+  ul.innerHTML = '';
+  expenses.filter(e => f === 'All' || e.category === f).forEach(e => {
+    const li = document.createElement('li');
+    li.dataset.testid = 'expense-item';
+    li.textContent = e.date + ' · ' + e.category + ' · ' + e.amount.toFixed(2);
+    ul.appendChild(li);
+  });
+}
+$('add-expense').addEventListener('click', () => {
+  const amount = parseFloat($('amount').value), date = $('date').value;
+  if (!(amount > 0) || !date) return;
+  expenses.push({ category: $('category').value, amount, date });
+  localStorage.setItem('expenses', JSON.stringify(expenses));
+  $('amount').value = ''; render();
+});
+$('filter-category').addEventListener('change', render);
+render();
+</script></body></html>

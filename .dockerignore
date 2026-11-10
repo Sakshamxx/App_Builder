@@ -1,0 +1,11 @@
+# Never send secrets, local data or caches into the image build context.
+.venv
+.env
+data
+evidence
+__MACOSX
+.DS_Store
+__pycache__
+*.pyc
+.pytest_cache
+.git

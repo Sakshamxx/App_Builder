@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Habits</title></head>
+<body>
+<h1>Habits</h1>
+<nav><a data-testid="nav-stats" href="stats.html">Stats</a></nav>
+<input data-testid="habit-name" placeholder="New habit">
+<button data-testid="add-habit">Add</button>
+<select data-testid="habit-filter"><option>All</option><option>Done</option><option>Open</option></select>
+<ul id="list"></ul>
+<script>
+let habits = JSON.parse(localStorage.getItem('habits') || '[]');
+const $ = id => document.querySelector('[data-testid="' + id + '"]');
+function save() { localStorage.setItem('habits', JSON.stringify(habits)); }
+function render() {
+  const f = $('habit-filter').value, ul = document.getElementById('list');
+  ul.innerHTML = '';
+  habits.filter(h => f === 'All' || (f === 'Done') === h.done).forEach((h, i) => {
+    const li = document.createElement('li');
+    li.dataset.testid = 'habit-item';
+    li.textContent = (h.done ? '✔ ' : '○ ') + h.name;
+    li.addEventListener('click', () => { h.done = !h.done; save(); render(); });
+    ul.appendChild(li);
+  });
+}
+$('add-habit').addEventListener('click', () => {
+  const name = $('habit-name').value.trim();
+  if (!name) return;
+  habits.push({ name, done: false }); $('habit-name').value = ''; save(); render();
+});
+$('habit-filter').addEventListener('change', render);
+render();
+</script></body></html>

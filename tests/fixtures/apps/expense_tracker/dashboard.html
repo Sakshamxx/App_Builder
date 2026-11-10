@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Dashboard</title></head>
+<body>
+<h1>This month</h1>
+<nav><a data-testid="nav-home" href="index.html">Expenses</a></nav>
+<p>Total this month: <span data-testid="month-total"></span></p>
+<p>Budget remaining: <span data-testid="budget-remaining"></span></p>
+<script>
+const now = new Date();
+const month = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+const expenses = JSON.parse(localStorage.getItem('expenses') || '[]');
+const total = expenses.filter(e => e.date.slice(0, 7) === month).reduce((s, e) => s + e.amount, 0);
+const budget = parseFloat(localStorage.getItem('budget') || '0');
+document.querySelector('[data-testid="month-total"]').textContent = total.toFixed(2);
+document.querySelector('[data-testid="budget-remaining"]').textContent = (budget - total).toFixed(2);
+</script></body></html>

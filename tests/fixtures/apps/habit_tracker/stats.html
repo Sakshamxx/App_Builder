@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Habit stats</title></head>
+<body>
+<h1>Stats</h1>
+<nav><a data-testid="nav-home" href="index.html">Back</a></nav>
+<p>Done: <span data-testid="done-count"></span></p>
+<p>Open: <span data-testid="open-count"></span></p>
+<script>
+const habits = JSON.parse(localStorage.getItem('habits') || '[]');
+document.querySelector('[data-testid="done-count"]').textContent = habits.filter(h => h.done).length;
+document.querySelector('[data-testid="open-count"]').textContent = habits.filter(h => !h.done).length;
+</script></body></html>

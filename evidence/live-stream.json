@@ -1,0 +1,21 @@
+{
+  "provider": "gemini",
+  "model": "gemini-3.5-flash-lite",
+  "deltas": 2,
+  "tool_calls": [
+    {
+      "id": "call_645446012231345329",
+      "name": "list_files",
+      "arguments": "{\"description\":\"list\"}",
+      "extra_content": {
+        "google": {
+          "thought_signature": "EmAKXgFpFH0Tv9/IHJCZXNJkft91bLnz4x4mCUxgIEKzuX9b0oZFQ9wPAjslhIf8j0pCMnJKAVwv5iLMh48VyGKYFfMTBmdAVNKE1VwnvETV53bO0KCGexrK4DVACz87cNI="
+        }
+      }
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 34,
+    "completion_tokens": 20
+  }
+}

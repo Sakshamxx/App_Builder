@@ -1,0 +1,9 @@
+# Runtime (all permissive licences; versions are those the reference was validated with)
+fastapi==0.162.0
+uvicorn==0.54.0
+httpx==0.28.1
+pydantic==2.13.5
+playwright==1.63.0      # then run: playwright install chromium
+langgraph==1.2.20        # only the framework implementation imports it
+# Tests
+pytest>=8

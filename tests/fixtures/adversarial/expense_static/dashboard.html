@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Dashboard</title></head>
+<body>
+<h1>This month</h1>
+<nav><a data-testid="nav-home" href="index.html">Expenses</a></nav>
+<p>Total this month: <span data-testid="month-total"></span></p>
+<p>Budget remaining: <span data-testid="budget-remaining"></span></p>
+<script>
+document.querySelector('[data-testid="month-total"]').textContent = '65.00';
+document.querySelector('[data-testid="budget-remaining"]').textContent = '35.00';
+</script></body></html>

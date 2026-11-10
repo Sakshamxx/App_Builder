@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App Builder Agent</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>App Builder Agent</h1>
+  <p class="proto" id="proto">Prototype—live-model and delivery validation outstanding. Local use only: it runs model-written code on this computer and is not safe to put on a public address.</p>
+  <div id="banner" class="banner" role="status"></div>
+</header>
+<main>
+  <aside>
+    <h2>Your projects <small>(saved in this browser)</small></h2>
+    <ul id="projects" class="plist"></ul>
+    <label class="btn secondary">Import project (.zip)<input id="importFile" type="file" accept=".zip" hidden></label>
+    <p class="hint">Imported projects are untrusted: you re-approve the criteria and the checks run again.</p>
+  </aside>
+  <section id="work">
+    <form id="newForm">
+      <h2>Describe an app</h2>
+      <textarea id="request" rows="4" maxlength="4000" placeholder="e.g. A tip calculator that splits a bill between friends and remembers my last tip percentage"></textarea>
+      <button class="btn" id="createBtn">Assess request</button>
+    </form>
+    <div id="project" hidden></div>
+    <div id="msg" class="msg" role="alert" hidden></div>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>
